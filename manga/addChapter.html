@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<title>AddManga</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+
+<head>
+    <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+    <link rel="stylesheet" href="../mangastyle.css">
+    <script src="Manga.js"></script>
+    <script src="../javascript.js"></script>
+    <script src="../User.js"></script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="ft_top" style="background-color: white">
+    <div class="ft_top" style="background-color: white">
+        <div class="div_top">
+            <div class="left_top">
+                <p class="logo" style="font-size: 26px;margin-top: 5px">
+                    <a href="../index.html"><span style="color: red">C</span>MANGA</a>
+                </p>
+
+                <div>
+                    <button class="btn btn-outline-danger" onclick="switchLightMode()" id="light-dark"
+                            title="Chế độ sáng tối">
+                        <i class="bi bi-lightbulb-off-fill"></i>
+                    </button>
+                </div>
+                <div class="d-flex align-items-center"
+                     style="border: 1px solid #cccccc;border-radius: 50px;color: #757575;padding: 0 45px 0 20px;height: 44px;width: 35%;margin-top: 5px">
+                    <input class="form-control me-2" style="border: none" placeholder="Truyện bạn muốn tìm">
+                    <i class="bi bi-search " style="color: #dc4d4d"></i>
+                </div>
+            </div>
+            <div class="right-top" style="text-align: center;margin-top: 10px">
+                <a class="btn btn-primary" role="button" id="login"
+                   onclick="document.getElementById('id01').style.display='block'">Đăng nhập</a>
+                <a class="btn btn-primary" role="button" id="register"
+                   onclick="document.getElementById('id02').style.display='block'">Đăng ký</a>
+                <div class="dropdown" id="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                        Dropdown
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#" onclick="logout()">logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="rounded col-12" style="background-color: #dc4d4d; text-align: center; margin: 20px 20px 20px 20px">
+            <div class="btn-change">
+                <div>
+                    <progress value="0" max="100" id="uploader">0%</progress>
+                    <input type="file" value="upload" accept=".jpg" id="fileButton" multiple>
+                </div>
+                <div>
+                    <button onclick="createImgChap()"
+                            style="border-radius: 25%;background-color: #888888;color: #f0f0f0;border-color: #dc4d4d">Thêm
+                    </button>
+                    <button style="border-radius: 25%;background-color: #888888;color: #f0f0f0;border-color: #dc4d4d">
+                        <a href="readManga.html">
+                        Demo</a>
+                    </button>
+                </div>
+            </div>
+            <table class="table" style="">
+                <tr class="table-primary">
+                    <th>STT</th>
+                    <th>Hình ảnh</th>
+                    <th class="btn-change">EDIT</th>
+                    <th class="btn-change">DELETE</th>
+                </tr>
+                <tbody id="drawTable" ></tbody>
+            </table>
+        </div>
+        <div ></div>
+    </div>
+</div>
+</body>
+<script>
+    let idUser = parseInt(localStorage.getItem('idKey'));
+
+    //ẩn hiện login
+    let username2 = localStorage.getItem('nameKey')
+    if (username2 != null) {
+        document.getElementById('register').style.display = "none";
+        document.getElementById('login').style.display = "none";
+        document.getElementById('dropdownMenuButton1').innerHTML = username2;
+    } else {
+        document.getElementById('dropdown').style.display = 'none'
+
+    }
+
+    function logout() {
+        localStorage.removeItem('nameKey')
+        location.reload()
+    }
+
+    class imgChap{
+        id;
+        imgChapTr;
+
+        constructor(id, imgChapTr) {
+            this.id = id;
+            this.imgChap = imgChapTr;
+        }
+    }
+
+    let listImgChap = JSON.parse(localStorage.getItem('list_imgChap'))
+    if (listImgChap==null){
+        listImgChap = [];
+    }
+
+    function createImgChap(){
+        let id=0;
+        let imgChapTr =getImage();
+        if(listImgChap.length===0){ //Nếu mảng rỗng , cho phần tử có id=1
+            id =1;
+        }else{
+            id =listManga[listManga.length-1].id+1;
+        }
+        let ImgChap = new imgChap(id, imgChapTr);
+        listImgChap.push(ImgChap);
+        localStorage.removeItem('list_imgChap'); // xóa phần    tử dđi
+        localStorage.setItem('list_imgChap'  ,JSON.stringify(listImgChap)); //rồi xét lại
+    }
+
+
+</script>
+<script src="../upload/upload_fileImg.js"></script>
+
+</html>

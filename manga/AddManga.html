@@ -256,7 +256,7 @@
                              <td>${i + 1}</td>
                              <td><img style="width: auto;height: 150px;border-radius: 8%;" src="${listManga[i].image}" alt=""></td>
                                 <td>${listManga[i].mangaName}</td>
-                                <td>${listManga[i].chapter_number}</td>
+                                <td>${listManga[i].chapter_number} <button><a href="addChapter.html">Thêm</a></button></td>
                                 <td>${listManga[i].statusManga}</td>
                                 <td class="btn-change" ><button  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
                                 data-bs-whatever="${listManga[i].mangaName}" onclick="showUpdateModal(${listManga[i].id})"><i class="bi bi-pen-fill"></i></button></td>
