@@ -1,0 +1,622 @@
+#menu ul li{
+    list-style-type: none;
+    display: inline;
+    margin-left: 50px;
+    color: white;
+}
+
+
+#light-dark{
+    border-radius: 75px;
+    text-align: center;
+    height: 44px;
+    background-color: transparent;
+    width: 44px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 5px
+}
+.btn-circle.btn-lg {
+    width: 50px;
+    height: 50px;
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.33;
+    border-radius: 25px;
+}
+.middle{
+    display: flex;
+}
+.li-a-set{
+ color: white;
+}
+.left-mid{
+    width: 70%;
+    padding-right: 25px;
+    padding-left: 5px;
+}
+.right-mid{
+
+    width: 30%;
+    /*padding-left: 25px;*/
+    /*!*padding-top: 30px;*!*/
+    /*padding-right: 25px;*/
+}
+.bg-light{
+    background-color: #dc4d4d !important;
+}
+/*.pc-display{*/
+/*    margin-left: 60%;*/
+/*}*/
+.grid{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 13%;
+
+}
+.grid_item {
+    width: 24%;
+    height: 300px;
+    margin-left: 9px;
+}
+#box_chat{
+    background-color: white;
+    padding: 10px;
+    position: relative;
+    border-radius: 5px;
+    overflow: scroll;
+    height: 250px;
+}
+.chat_div{
+    /*height: 450px;*/
+    margin-bottom: 10px;
+    overflow: auto;
+    position: relative;
+}
+#chat_text{
+    width: 100%;
+    /*margin-top: 18%;*/
+    line-height: 35px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    padding: 0 10px;
+}
+#cricle{
+    /*position: ;*/
+    right: 8px;
+    top: 78%;
+    font-size: 24px;
+    opacity: 0.5;
+    border: none;
+    /*display: none;*/
+}
+.book-avarta{
+    /*height: 220px;*/
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+.book-details{
+    /*position: absolute;*/
+    width: 100%;
+    color: white;
+    background-color: #2f2a2a;
+    padding:  0 10px;
+}
+.image{
+    width: 100%;
+    display: block;
+    height: 200px;
+    object-fit: fill;
+
+}
+.book-name a{
+    font-weight: bold;
+    text-align: center;
+    font-size: 15px;
+}
+.last-chapter a{
+    text-decoration: none;
+    font-size: 12px;
+}
+.active{
+    text-align: center;
+    background-color: #dc4d4d;
+    border-radius:50%;
+    width: 40px;
+    height: 40px;
+    color: white;
+    margin-left: 50%;
+    border-color: #dc4d4d;
+    /*margin-bottom: 60px;*/
+}
+.page-direct > div{
+    margin: 10px;
+    text-align: center;
+}
+body{
+    background: #f0f0f0;
+    color: #222;
+    display: grid;
+}
+/* Dark Mode styles */
+body.dark-theme {
+    /*color: #eee;*/
+    background: #121212;
+}
+.comuni{
+    background: white;
+    /*color: white;*/
+    padding: 15px;
+    width: 66%;
+    height: 200px;
+    overflow: auto;
+    border: 1px solid #ccc;
+}
+
+.top{
+
+}
+.manga_top{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+
+}
+.manga_top > div{
+    margin: 10px;
+
+}
+.detail {
+    display: flex;
+    flex-direction: column;
+    width: 170px;
+    /*position: relative;*/
+    /*min-height: 60px;*/
+}
+.detail > div{
+    margin: 3px;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+#xem_them {
+    color: blue
+}
+#xem_them1 {
+    color: blue
+}
+.div_bottom{
+    width: 1200px;
+    margin: 0 auto;
+}
+.left-bottom{
+    float: left;
+    width: 50%;
+}
+.right-bottom{
+    float: right;
+    width: 50%;
+}
+footer {
+    border-top: 12px solid #dc4d4d;
+    padding: 20px 0;
+    margin-top: 30px;
+}
+footer .right-bottom ul{
+    margin-bottom: 3px;
+}
+ul{
+    list-style: outside none none;
+
+}
+
+footer .right-bottom ul li{
+    float: left;
+    line-height: 30px;
+    padding: 0 5px;
+    background-color: #e2e2e2;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    border-radius: 3px;
+    font-size: 13px;
+}
+.clear{
+    clear: both;
+}
+footer .right-bottom p{
+    
+    font-size: 13px;
+    line-height: 21px;
+}
+.trans_top{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+
+}
+.trans_top > div {
+    margin: 10px;
+}
+.chapter {
+    color: #cccccc;
+}
+.total-view {
+    color: #cccccc;
+}
+.div_top{
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+}
+.div_top > div{
+    margin: 5px;
+    /*padding: 20px;*/
+}
+.btn-outline-danger{
+    width: 40px;
+    height: 40px;
+}
+.left_top{
+    display: flex;
+    float: left;
+    width: 80%;
+
+}
+.btn-outline-success{
+    color : #dc4d4d;
+    border-color: #dc4d4d;
+}
+.right-top{
+    display: flex;
+    float: right;
+    width: 30%;
+}
+.btn-outline-primary{
+    color: black;
+    font-weight: bold;
+    border-color: #dc4d4d;
+}
+
+/*////login*/
+/* Full-width input fields */
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+/*button {*/
+/*    background-color: #04AA6D;*/
+/*    color: white;*/
+/*    padding: 14px 20px;*/
+/*    margin: 8px 0;*/
+/*    border: none;*/
+/*    cursor: pointer;*/
+/*    width: 100%;*/
+/*}*/
+
+button:hover {
+    opacity: 0.8;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+}
+
+/* Center the image and position the close button */
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+    position: relative;
+}
+
+img.avatar {
+    width: 20%;
+    border-radius: 50%;
+    border: 1px solid black;
+}
+
+.container {
+    padding: 16px;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: red;
+    cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)}
+    to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+    from {transform: scale(0)}
+    to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+        display: block;
+        float: none;
+    }
+    .cancelbtn {
+        width: 100%;
+    }
+}
+/*//mangainffo.css*/
+.truyen_tranh{
+    font-size: 20px;
+    color: #3f94d5;
+    margin-top: 30px;
+}
+.book-detail{
+    background-color: white;
+    padding: 15px;
+    border-radius: 5px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+.book_avarta{
+    height: 250px;
+    overflow: hidden;
+    width: 190px;
+    border-radius: 5px;
+    text-align: center;
+    float: left;
+    box-shadow: 0 0 8px 0 #757575;
+}
+.book_other{
+    float: left;
+    margin-left: 30px;
+    max-width: 920px;
+}
+.book_other .name{
+    font-size: 24px;
+    font-weight: 600;
+    color: #000;
+    text-transform: capitalize;
+    max-width: 920px;
+}
+.kind{
+    max-width: 920px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+.book_other .kind .p{
+    border: 1px solid #f0564a;
+    color: #f0564a;
+    margin-right: 7px;
+    padding: 5px 10px;
+    text-transform: capitalize;
+    border-radius: 3px;
+    float: left;
+    margin-bottom: 10px;
+    line-height: 20px;
+}
+td{
+width: 50%;
+line-height: 36px;
+    font-weight: bold;
+}
+
+.btn-success {
+    color: white;
+    width: 145px;
+    border-radius: 150px;
+    border: 0;
+    margin-right: 4px;
+    font-size: 17px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+.btn-warning{
+    color: white;
+    width: 145px;
+    border-radius: 150px;
+    border: 0;
+    margin-right: 4px;
+    font-size: 17px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+.btn-danger{
+    color: white;
+    width: 145px;
+    border-radius: 150px;
+    border: 0;
+    margin-right: 4px;
+    font-size: 17px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+.btn-secondary{
+    color: white;
+    width: 145px;
+    border-radius: 150px;
+    border: 0;
+    margin-right: 4px;
+    font-size: 17px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+.btn-primary{
+    color: white;
+    width: 145px;
+    border-radius: 150px;
+    border: 0;
+    margin-right: 4px;
+    font-size: 17px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+h3{
+    color: #f0564a;
+    font-size: 20px;
+    position: relative;
+    width: 100%;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+.list_chapter{
+    width: 100%;
+    border-radius: 5%;
+    border: 1px solid #eaeaea;
+    max-height: 500px;
+    overflow: auto;
+}
+#table_list{
+    width: 100%;
+    border-radius: 3%;
+text-align: left;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.comment_text_value{
+    width: 100%;
+    height: 100px;
+    line-height: 20px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    padding: 0 5px 0 5px;
+}
+.bi-send{
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #3f94d5;
+}
+/*//ReadManga.css*/
+.chapter_content{
+    text-align: center;
+    padding-bottom: 40px;
+    position: relative;
+}
+#change_server{
+    line-height: 40px;
+    height: 40px;
+    padding: 0 10px;
+    background-color: #3f94d5;
+    font-size: 16px;
+    color: white;
+    border-radius: 3px;
+    border: none;
+}
+.chapter_content img {
+    margin: 0 auto;
+}
+.change_chapter{
+margin-top: 20px;
+    left: 50%;
+}
+.previous_chapter{
+    line-height: 40px;
+    height: 40px;
+    width: 40px;
+    margin: 0 3px;
+    background-color: #3f94d5;
+    font-size: 18px;
+    color: white;
+    border-radius: 3px;
+    border: none;
+    float: left;
+}
+.next_chapter{
+    line-height: 40px;
+    height: 40px;
+    width: 40px;
+    margin: 0 3px;
+    background-color: #3f94d5;
+    font-size: 18px;
+    color: white;
+    border-radius: 3px;
+    border: none;
+    float: left;
+}
+.form-select{
+    width: 200px;
+    float: left;
+}
+#upload{
+
+}
+.a-kind{
+    color: #dc4d4d;
+}
+.modal-backdrop.show{
+    opacity: 0;
+    display: none;
+}
+.imgNearMid{
+    position: absolute;
+    z-index: 1;
+    width: 143px;
+    height: 100%;
+    margin-top: 126px;
+}
+.chapter_control{
+    float: right;
+    transition: top 0.3s;
+    display: block;
+    position: fixed;
+    background-color: white;
+}

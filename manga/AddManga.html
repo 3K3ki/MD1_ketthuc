@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AddManga</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+
+
+    <!--<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>-->
+    <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+    <link rel="stylesheet" href="../mangastyle.css">
+    <script src="Manga.js"></script>
+    <script src="../javascript.js"></script>
+    <script src="../User.js"></script>
+
+</head>
+<body>
+<div class="ft_top" style="background-color: white">
+    <div class="ft_top" style="background-color: white">
+        <div class="div_top">
+            <div class="left_top">
+                <p class="logo" style="font-size: 26px;margin-top: 5px">
+                    <a href="../index.html"><span style="color: red">C</span>MANGA</a>
+                </p>
+
+                <div>
+                    <button class="btn btn-outline-danger" onclick="switchLightMode()" id="light-dark"
+                            title="Chế độ sáng tối">
+                        <i class="bi bi-lightbulb-off-fill"></i>
+                    </button>
+                </div>
+                <div class="d-flex align-items-center"
+                     style="border: 1px solid #cccccc;border-radius: 50px;color: #757575;padding: 0 45px 0 20px;height: 44px;width: 35%;margin-top: 5px">
+                    <input class="form-control me-2" style="border: none" placeholder="Truyện bạn muốn tìm">
+                    <i class="bi bi-search " style="color: #dc4d4d"></i>
+                </div>
+            </div>
+            <div class="right-top" style="text-align: center;margin-top: 10px">
+                <a class="btn btn-primary" role="button" id="login"
+                   onclick="document.getElementById('id01').style.display='block'">Đăng nhập</a>
+                <a class="btn btn-primary" role="button" id="register"
+                   onclick="document.getElementById('id02').style.display='block'">Đăng ký</a>
+                <div class="dropdown" id="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                        Dropdown
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#" onclick="logout()">logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="rounded col-12" style="background-color: #dc4d4d; text-align: center; margin: 20px 20px 20px 20px">
+            <div class="btn-change">
+            <div>
+                <progress value="0" max="100" id="uploader">0%</progress>
+                <input type="file" value="upload" accept=".jpg" id="fileButton">
+            </div>
+            <div class="input-group mb-3">
+                <input id="name" type="text" class="form-control" placeholder="Nhập tên">
+                <span class="input-group-mb-3"></span>
+            </div>
+            <div>
+                <input id="chapter" type="text" class="form-control" placeholder="Nhập chapter">
+                <span class="input-group-mb-3"></span>
+            </div>
+
+            <div>
+                <input id="status" type="text" class="form-control" placeholder="Nhập trạng thái">
+            </div>
+            <div>
+                <button onclick="createManga()"
+                        style="border-radius: 25%;background-color: #888888;color: #f0f0f0;border-color: #dc4d4d">Thêm
+                </button>
+            </div>
+        </div>
+            <table class="table" style="">
+                <tr class="table-primary">
+                    <th>STT</th>
+                    <th>Hình ảnh</th>
+                    <th>NAME</th>
+                    <th>Chapter</th>
+                    <th>STATUS</th>
+                    <th class="btn-change">EDIT</th>
+                    <th class="btn-change">DELETE</th>
+                </tr>
+                <tbody id="drawTable" ></tbody>
+            </table>
+        </div>
+        <div ></div>
+    </div>
+</div>
+
+<!--MODAL EDIT-->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label  class="col-form-label">Name:</label>
+                        <input type="text" class="form-control" id="update_manga_name">
+                    </div>
+                    <div class="mb-3">
+                        <label  class="col-form-label">chapter:</label>
+                        <input type="number" class="form-control" id="update_chapter_number">
+                    </div>
+                    <div class="mb-3">
+                        <label  class="col-form-label">Status:</label>
+                        <input type="text" class="form-control" id="update_status_manga">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="updateManga()" data-bs-dismiss="modal">Update Manga</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--MODAL DELETE-->
+<div class="modal fade" id="exampleModalDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabelDelete">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">No</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" onclick="deleteManga()">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--END MODAL DELETE-->
+<!--//loginform-->
+<!--<a class="btn btn-primary" role="button"  onclick="document.getElementById('id01').style.display='block'" >Đăng nhập</a>-->
+<div id="id01" class="modal">
+
+    <form class="modal-content animate" method="post">
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+            <img src="../img/hhinh-anh-luffy-chibi-thu-the-rat-ngau_055520104.jpg" alt="Avatar" class="avatar">
+        </div>
+        <div class="container">
+            <label class="alert alert-primary" style="color: red" id="checklogin"></label>
+            <label for=><b id="validate_username1">Tài khoản</b></label>
+            <input type="text" placeholder="Nhập tài khoản" name="uname" id="username1" oninput="validate1()" required>
+
+            <label for=     ><b id="validate-password1">Mật khẩu</b></label>
+            <input type="password" placeholder="Nhập mật khẩu" name="psw" id="password1" oninput="validate1()" required>
+
+            <button class="btn btn-outline-success" type="button" onclick="login()">Đăng nhập</button>
+            <label>
+                <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+        </div>
+        <div class="container" style="background-color:#f1f1f1">
+            <button style="color: #e2e2e2" type="button" onclick="document.getElementById('id01').style.display='none'"
+                    class="cancelbtn">Hủy
+            </button>
+            <span class="psw">Forgot <a href="#">password?</a></span>
+        </div>
+    </form>
+</div>
+<!--//Singupform-->
+<div id="id02" class="modal">
+    <form class="modal-content animate" method="post">
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+            <img src="../img/hhinh-anh-luffy-chibi-thu-the-rat-ngau_055520104.jpg" alt="Avatar" class="avatar">
+        </div>
+
+        <div class="container">
+            <label for=><b id="validate_username">Tài khoản</b></label>
+            <input type="text" placeholder="Nhập tài khoản" name="uname" id="username" oninput="validate()" required>
+
+            <label for=><b id="validate_password">Mật khẩu</b></label>
+            <input type="password" placeholder="Nhập mật khẩu" name="psw" id="password" oninput="validate()" required>
+
+            <label for=><b id="validate_re">Nhập lại mật khẩu</b></label>
+            <input type="password" placeholder="Nhập lại mật khẩu" name="rpsw" id="re-password" oninput="validate()"
+                   required>
+
+            <button class="btn btn-outline-success" type="button" onclick="register()">Đăng ký</button>
+            <button class="btn btn-outline-success" type="button"
+                    onclick="document.getElementById('id01').style.display='block'">Đăng nhập
+            </button>
+            <label>
+                <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+        </div>
+        <div class="container" style="background-color:#f1f1f1">
+            <button style="" type="button" onclick="document.getElementById('id02').style.display='none'"
+                    class="cancelbtn">Hủy
+            </button>
+            <span class="psw">Forgot <a href="#">password?</a></span>
+        </div>
+    </form>
+</div>
+</body>
+<script>
+    let idUser = parseInt(localStorage.getItem('idKey'));
+    let listManga = JSON.parse(localStorage.getItem('list_manga'))
+    if (listManga==null){
+        listManga = [];
+    }
+    //ẩn hiện login
+    let username2 = localStorage.getItem('nameKey')
+    if (username2 != null) {
+        document.getElementById('register').style.display = "none";
+        document.getElementById('login').style.display = "none";
+        document.getElementById('dropdownMenuButton1').innerHTML = username2;
+    } else {
+        document.getElementById('dropdown').style.display = 'none'
+
+    }
+
+    function logout() {
+        localStorage.removeItem('nameKey')
+        location.reload()
+    }
+    function showManga() {
+        let drawTable = '';
+        let classTR = '';
+        for (let i = 0; i < listManga.length; i++) {
+            if(i%2==0){
+                classTR = 'tale-warning'
+            } else {
+                classTR = 'tale-success'
+            }
+            drawTable += `<tr>
+                             <td>${i + 1}</td>
+                             <td><img style="width: auto;height: 150px;border-radius: 8%;" src="${listManga[i].image}" alt=""></td>
+                                <td>${listManga[i].mangaName}</td>
+                                <td>${listManga[i].chapter_number}</td>
+                                <td>${listManga[i].statusManga}</td>
+                                <td class="btn-change" ><button  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                data-bs-whatever="${listManga[i].mangaName}" onclick="showUpdateModal(${listManga[i].id})"><i class="bi bi-pen-fill"></i></button></td>
+                                <td class="btn-change" ><button  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalDelete"
+                               data-bs-whatever="${listManga[i].mangaName}" onclick="showModalDelete(${listManga[i].id})"><i class="bi bi-pen-fill"></i></button></td>
+                            </tr>`
+        }
+        document.getElementById('drawTable').innerHTML = drawTable;
+    }
+    showManga();
+    function createManga(){
+        let id=0;
+        let image =getImage();
+        let mangaName = document.getElementById('name').value;
+        let chapter_number = +document.getElementById('chapter').value;
+        let statusManga = document.getElementById('status').value;
+        if(listManga.length===0){ //Nếu mảng rỗng , cho phần tử có id=1
+            id =1;
+        }else{
+            id =listManga[listManga.length-1].id+1;
+        }
+        let manga = new Manga(id, image, mangaName,chapter_number,statusManga,idUser);
+        listManga.push(manga);
+        localStorage.removeItem('list_manga'); // xóa phần    tử dđi
+        localStorage.setItem('list_manga'  ,JSON.stringify(listManga)); //rồi xét lại
+        showManga();
+    }
+    ////Tìm id
+    function findById(id) {
+        for (let i = 0; i < listManga.length; i++) {
+            if(id===listManga[i].id){
+                return listManga[i];
+            }
+        }
+    }
+    /// Cập nhật
+    let idUpdate = 0;
+    function showUpdateModal(id) {
+        idUpdate = id;
+        console.log('id ---->', id)
+        let manga = findById(id);
+        document.getElementById('update_manga_name').value = manga.mangaName;
+        document.getElementById('update_chapter_number').value = manga.chapter_number;
+        document.getElementById('update_status_manga').value = manga.statusManga;
+    }
+    function updateManga() {
+        let updateManga = findById(idUpdate);
+        let updateName = document.getElementById('update_manga_name').value;
+        let updateChapter = document.getElementById('update_chapter_number').value;
+        let updateStatus = document.getElementById('update_status_manga').value;
+        updateManga.mangaName = updateName;
+        updateManga.chapter_number = updateChapter;
+        updateManga.statusManga = updateStatus;
+        localStorage.removeItem('list_manga');
+        localStorage.setItem('list_manga', JSON.stringify(listManga));
+        showManga();
+    }
+
+    // DELETE manga
+    let idDelete = 0;
+        function showModalDelete(id) {
+            console.log('goi show -->', id)
+        idDelete = id;
+    }
+    function deleteManga() {
+        for (let i = 0; i < listManga.length; i++) {
+            if(listManga[i].id===idDelete){
+                listManga.splice(i,1)
+            }
+        }
+        localStorage.removeItem('list_manga')
+        localStorage.setItem('list_manga', JSON.stringify(listManga));
+        showManga();
+    }
+    //JS MODAL EDIT
+    var exampleModal = document.getElementById('exampleModal')
+    exampleModal.addEventListener('show.bs.modal', function (event) {
+        // Button that triggered the modal
+        var button = event.relatedTarget
+        // Extract info from data-bs-* attributes
+        var recipient = button.getAttribute('data-bs-whatever')
+        // If necessary, you could initiate an AJAX request here
+        // and then do the updating in a callback.
+        //
+        // Update the modal's content.
+        var modalTitle = exampleModal.querySelector('.modal-title')
+        var modalBodyInput = exampleModal.querySelector('.modal-body input')
+        console.log('check data modal ====> ', recipient.mangaName)
+        modalTitle.textContent = 'Update Manga: ' + recipient
+        modalBodyInput.value = recipient
+    })
+
+    //JS MODAL DELETE
+    var exampleModal = document.getElementById('exampleModalDelete')
+    exampleModal.addEventListener('show.bs.modal', function (event) {
+        // Button that triggered the modal
+        var button = event.relatedTarget
+        // Extract info from data-bs-* attributes
+        var recipient = button.getAttribute('data-bs-whatever')
+        // If necessary, you could initiate an AJAX request here
+        // and then do the updating in a callback.
+        //
+        // Update the modal's content.
+        var modalTitle = exampleModal.querySelector('.modal-title')
+        var modalBodyInput = exampleModal.querySelector('.modal-body input')
+
+        modalTitle.textContent = 'New message to ' + recipient
+        // modalBodyInput.value = recipient
+    })
+
+
+</script>
+<script src="../upload/upload.js"></script>
+
+</html>

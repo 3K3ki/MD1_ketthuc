@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Trang Chủ</title>
+    <link rel="stylesheet" href="mangastyle.css">
+    <script src="User.js"></script>
+    <script src="javascript.js"></script>
+</head>
+<body>
+<div style="background-color: #e2e2e2" class="top">
+    <div class="ft_top" style="background-color: white">
+        <div class="div_top">
+            <div class="left_top">
+                <p class="logo" style="font-size: 26px;margin-top: 5px">
+                    <a href="index.html"><span style="color: red">C</span>MANGA</a>
+                </p>
+
+                <div>
+                    <button class="btn btn-outline-danger" onclick="switchLightMode()" id="light-dark"
+                            title="Chế độ sáng tối">
+                        <i class="bi bi-lightbulb-off-fill"></i>
+                    </button>
+                </div>
+                <div class="d-flex align-items-center"
+                     style="border: 1px solid #cccccc;border-radius: 50px;color: #757575;padding: 0 10px 0 20px;height: 44px;margin-top: 5px">
+                    <input class="form-control me-2" style="border: none"  id="search" placeholder="Truyện bạn muốn tìm">
+                    <button onclick="searchManga()" style="border: none;background-color: white"><i class="bi bi-search " style="color: #dc4d4d;margin-left: 30px" ></i></button>
+                </div>
+            </div>
+            <div class="right-top" style="text-align: center;margin-top: 10px">
+                <button class="btn btn-primary" id="login"
+                        onclick="document.getElementById('id01').style.display='block'">Đăng nhập</button>
+                <button class="btn btn-primary" id="register"
+                        onclick="document.getElementById('id02').style.display='block'">Đăng ký</button>
+                <div class="dropdown" id="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                        Dropdown button
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="#" onclick="document.getElementById('id03').style.display='block'">Đổi mật khẩu</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#" onclick="logout()">Log out</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid" style="margin-left: 131px">
+            <a class="navbar-brand" href="#">CGame</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item" style="">
+                        <a class="nav-link active" aria-current="page" href="#">Raw</a>
+                    </li>
+                    <li class="nav-item dropdown" style="margin-left: 40px">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            Thể loại
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item" style="">
+                        <a class="nav-link active" aria-current="page" id="add_manga" href="manga/AddManga.html">AddManga</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+<!--<img src="img/One_Piece_Film-_Red_-_Áp_phích_Việt_Nam.jpg"  class="imgNearMid">-->
+<div class="middle">
+    <div class="left-mid">
+        <div style="margin-left: 140px" class="">
+            <div class="chat">
+                <div>
+                    <button type="button" class="btn btn-outline-success">Tổng</button>
+                    <button type="button" class="btn btn-outline-success">Chợ</button>
+                    <button type="button" class="btn btn-outline-success">Tuyển</button>
+                    <button type="button" class="btn btn-outline-danger"
+                            style="margin-left: 60%;border-radius: 75px"><i class="bi bi-window-stack"></i></button>
+                    <button type="button" class="btn btn-outline-danger" title="Mở Rộng Tiện ích"
+                            style="border-radius: 75px"><i class="bi bi-menu-up"></i></button>
+                    <button type="button" class="btn btn-outline-danger" style="border-radius: 75px"><i
+                            class="bi bi-volume-up-fill"></i></button>
+                </div>
+            </div>
+            <div id="box_chat" class="box_chat_home">
+                <div class="chat_div" id="">
+                    <h3 id="chat_div"></h3>
+                </div>
+            </div>
+                <div class="chat_add" style="position: relative ; display: flex">
+                    <input id="chat_text" type="text" placeholder="Bạn muốn nhắn điều gì...">
+                    <div>
+                        <button id="cricle"><i onclick="createCommentt()" class="bi bi-arrow-down-square-fill"></i>
+                        </button>
+                    </div>
+                </div>
+
+        </div>
+        <div class="slideshow-container" style="width: 86.5%;margin-left: 140px">
+
+            <div class="mySlides fade">
+                <div class="numbertext">1 / 3</div>
+                <img src="https://img.thuthuatphanmem.vn/uploads/2018/10/24/cute-wallpaper-christmas-3d_102459114.jpg" style="width:100%">
+                <div class="text">Chào Mừng Bạn</div>
+
+            </div>
+
+            <div class="mySlides fade">
+                <div class="numbertext">2 / 3</div>
+                <img src="https://vanhoadoisong.vn/wp-content/uploads/2022/10/100-wallpaper-anh-anime-attack-on-titan-full-hd-may-tinh-dien-thoai-6.jpg" style="width: 100%">
+                <div class="text">Đến với</div>
+            </div>
+            <div class="mySlides fade">
+                <div class="numbertext">3 / 3</div>
+                <img src="https://scontent.fhan4-3.fna.fbcdn.net/v/t39.30808-6/269606726_5183372668393712_3212239021897675904_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=730e14&_nc_ohc=UMNq93DP6TsAX-Gt5Fv&tn=LaUwIQpBX_LLbZsF&_nc_ht=scontent.fhan4-3.fna&oh=00_AfBtnQkWHjTCO0rCRGS8TqvmUXjarhN5cFvQR9_8bxjZJg&oe=63B3E692" style="width:100%">
+                <div class="text">CMANGA</div>
+
+            </div>
+            <div style="text-align:center">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </div>
+<!--        // Slide show script-->
+        <script>
+
+            let slideIndex = 0;
+            showSlides();
+
+            function showSlides() {
+                let i;
+                let slides = document.getElementsByClassName("mySlides");
+                let dots = document.getElementsByClassName("dot");
+                for (i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";
+                }
+                slideIndex++;
+                if (slideIndex > slides.length) {slideIndex = 1}
+                for (i = 0; i < dots.length; i++) {
+                    dots[i].className = dots[i].className.replace(" active", "");
+                }
+                slides[slideIndex-1].style.display = "block";
+                dots[slideIndex-1].className += " active";
+                setTimeout(showSlides, 2000); // Change image every 2 seconds
+            }
+        </script>
+
+        <div class="gnc" >
+            <h3 style="margin-left: 140px;color: red"><i class="bi bi-arrow-repeat"></i>Truyện mới cập nhật
+                <button type="button" class="btn btn-outline-danger" style="margin-left: 51%;border-radius: 75px"><i
+                        class="fa fa-child"></i></button>
+                <button type="button" class="btn btn-outline-danger" style="border-radius: 75px"><i
+                        class="bi bi-list-task"></i></button>
+                <button type="button" class="btn btn-outline-danger" style="border-radius: 75px"><i
+                        class="bi bi-funnel-fill"></i></button>
+            </h3>
+        </div>
+        <div class="grid" id="listComic">
+
+        </div>
+        <div class="page-direct" style="display: flex;justify-content: center">
+            <div>
+                <button class="active">1</button>
+            </div>
+            <div>
+                <button class="active">2</button>
+            </div>
+            <div>
+                <button class="active">3</button>
+            </div>
+            <div>
+                <button class="active">4</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="right-mid">
+        <div class="comuni">
+            <h4>Tham Gia Cộng Đồng</h4>
+            <hr>
+            <button style="border-radius: 7%;background-color: black">
+                <svg style="color: darkgray" xmlns="http://www.w3.org/2000/svg" width="68" height="68"
+                     fill="currentColor" class="bi bi-discord" viewBox="0 0 16 16">
+                    <path d="M13.545 2.907a13.227 13.227 0 0 0-3.257-1.011.05.05 0 0 0-.052.025c-.141.25-.297.577-.406.833a12.19 12.19 0 0 0-3.658 0 8.258 8.258 0 0 0-.412-.833.051.051 0 0 0-.052-.025c-1.125.194-2.22.534-3.257 1.011a.041.041 0 0 0-.021.018C.356 6.024-.213 9.047.066 12.032c.001.014.01.028.021.037a13.276 13.276 0 0 0 3.995 2.02.05.05 0 0 0 .056-.019c.308-.42.582-.863.818-1.329a.05.05 0 0 0-.01-.059.051.051 0 0 0-.018-.011 8.875 8.875 0 0 1-1.248-.595.05.05 0 0 1-.02-.066.051.051 0 0 1 .015-.019c.084-.063.168-.129.248-.195a.05.05 0 0 1 .051-.007c2.619 1.196 5.454 1.196 8.041 0a.052.052 0 0 1 .053.007c.08.066.164.132.248.195a.051.051 0 0 1-.004.085 8.254 8.254 0 0 1-1.249.594.05.05 0 0 0-.03.03.052.052 0 0 0 .003.041c.24.465.515.909.817 1.329a.05.05 0 0 0 .056.019 13.235 13.235 0 0 0 4.001-2.02.049.049 0 0 0 .021-.037c.334-3.451-.559-6.449-2.366-9.106a.034.034 0 0 0-.02-.019Zm-8.198 7.307c-.789 0-1.438-.724-1.438-1.612 0-.889.637-1.613 1.438-1.613.807 0 1.45.73 1.438 1.613 0 .888-.637 1.612-1.438 1.612Zm5.316 0c-.788 0-1.438-.724-1.438-1.612 0-.889.637-1.613 1.438-1.613.807 0 1.451.73 1.438 1.613 0 .888-.631 1.612-1.438 1.612Z"/>
+                </svg>
+            </button>
+            <button style="margin-right: 10px; border-radius: 7%;background-color: black">
+                <svg style="color: darkgray" xmlns="http://www.w3.org/2000/svg" width="68" height="68"
+                     fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                    <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+                </svg>
+            </button>
+        </div>
+        <div class="menu-right" style="height: auto;width: 304px;margin-top: 40px">
+            <div class="top" style="display: flex;justify-content: space-between">
+                <button type="button" class="btn btn-outline-primary">Top Ngày</button>
+                <button type="button" class="btn btn-outline-primary">Top Tuần</button>
+                <button type="button" class="btn btn-outline-primary">Top Tổng</button>
+            </div>
+            <div class="manga_top">
+                <div style="display: flex;align-items: center;border-bottom: 1px solid black">
+                    <div class="stt" style="width: 30px;font-size: 30px">1</div>
+                    <div class="book-avarta1"><img style="width: 60px;height: 75px;" src="img/voluyendinhphng.jpg"
+                                                   height="342" width="250"/></div>
+                    <div class="detail">
+                        <div class="name"><a href="manga/mangainfo.html">Võ Luyện Đỉnh Phong</a></div>
+                        <div class="chapter">Chapter 2889</div>
+                        <div class="total-view" style="margin-left: 100px"><i class="bi bi-eye-fill"></i>17,904
+                        </div>
+                    </div>
+                </div>
+                <!--                <hr style="margin-top: 10px">-->
+                <div style="display: flex;align-items: center;border-bottom: 1px solid black">
+                    <div class="stt" style="width: 30px;font-size: 30px">2</div>
+                    <div class="book-avarta1"><img style="width: 60px;height: 75px;" src="img/nhanvatphandien.jpg"
+                                                   height="342" width="250"/></div>
+                    <div class="detail">
+                        <div class="name"><a href="">Nhân Vật Phản Diện</a></div>
+                        <div class="chapter">Chapter 289</div>
+                        <div class="total-view" style="margin-left: 100px"><i class="bi bi-eye-fill"></i>8,904</div>
+                    </div>
+                </div>
+                <!--                <hr style="margin-top: 10px">-->
+                <div style="display: flex;align-items: center">
+                    <div class="stt" style="width: 30px;font-size: 30px">3</div>
+                    <div class="book-avarta1"><img style="width: 60px;height: 75px;" src="img/choido.jpg"
+                                                   height="342" width="250"/></div>
+                    <div class="detail">
+                        <div class="name"><a href="">Vừa Chơi Đã Có Tài</a></div>
+                        <div style="color: #cccccc">Chapter 28</div>
+                        <div class="total-view" style="margin-left: 100px;color: #cccccc"><i
+                                class="bi bi-eye-fill"></i>7,904
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <p><a id="xem_them" href="">Xem thêm...</a></p>
+            </div>
+            <!--            //toptrans-->
+            <div class="top-trans" style="display: flex">
+                <button type="button" class="btn btn-outline-primary">Top nhóm dịch</button>
+                <button type="button" class="btn btn-outline-primary">Top phiếu tháng</button>
+            </div>
+            <div class="trans_top">
+                <div style="display: flex;align-items: center;border-bottom: 1px solid black">
+                    <div class="stt" style="width: 30px;font-size: 30px">1</div>
+                    <div class="book-avarta1"><img style="width: 60px;height: 75px;" src="img/Đầutroc.jpg"
+                                                   height="342" width="250"/></div>
+                    <div class="detail">
+                        <div class="name"><a href="">Quần què CMANGA</a></div>
+                        <div class="chapter">Đã dịch 148 truyện</div>
+                        <div class="total-view" style="margin-left: 100px"><i class="bi bi-eye-fill"></i>170,441
+                        </div>
+                    </div>
+                </div>
+                <!--            <hr style="margin-top: 10px">-->
+                <div style="display: flex;align-items: center;border-bottom: 1px solid black">
+                    <div class="stt" style="width: 30px;font-size: 30px">2</div>
+                    <div class="book-avarta1"><img style="width: 60px;height: 75px;" src="img/manhwahoi.jpg"
+                                                   height="342" width="250"/></div>
+                    <div class="detail">
+                        <div class="name"><a href="https://cmangaac.com/vo-luyen-dinh-phong-189">Manhwa Hội</a>
+                        </div>
+                        <div class="chapter">28 truyện</div>
+                        <div class="total-view" style="margin-left: 100px"><i class="bi bi-eye-fill"></i>17,904
+                        </div>
+                    </div>
+                </div>
+                <!--            <hr style="margin-top: 10px">-->
+                <div style="display: flex;align-items: center">
+                    <div class="stt" style="width: 30px;font-size: 30px">3</div>
+                    <div class="book-avarta1"><img style="width: 60px;height: 75px;" src="img/ocgiakim.jpg"
+                                                   height="342" width="250"/></div>
+                    <div class="detail">
+                        <div class="name"><a href="https://cmangaac.com/vo-luyen-dinh-phong-189">Ốc giả kim</a>
+                        </div>
+                        <div style="color: #cccccc" class="chapter">27 truyện</div>
+                        <div class="total-view" style="margin-left: 100px;color: #cccccc"><i
+                                class="bi bi-eye-fill"></i>17,904
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <p><a id="xem_them1" href="">Xem thêm...</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!--//bottom-->
+<footer class="bottom">
+    <div class="div_bottom">
+        <div class="left-bottom">
+            <p class="logo" style="font-size: 30px">
+                <a href="index.html"><span style="color: red">C</span>MANGA</a>
+            </p>
+            <div>
+                <p>Luôn cập nhật liên tục các bộ truyện mới, truyện VIP để phục vụ độc giả<br>
+                    Đọc truyện hoàn toàn miễn phí, hỗ trợ đa thiết bị.</p>
+            </div>
+            <div>
+                <p>Email khiếu nại:cmangadotcom@gmail.com
+                    <br>
+                    <a>Giới thiệu</a>
+                    <a>Liên hệ</a>
+                    <a>Chính sách </a>
+                    <br>
+                    Copyright © 2020 CMANGAVIP.COM
+                </p>
+            </div>
+        </div>
+        <div class="right-bottom">
+            <ul>
+                <li><a href="">Truyện tranh ngôn tình</a></li>
+                <li><a href="">manhwa</a></li>
+                <li><a href="">manhua</a></li>
+                <li><a href="">Đam mỹ</a></li>
+                <li><a href="">yaoi</a></li>
+                <li><a href="">Ngôn tình</a></li>
+                <li><a href="">Cổ đại</a></li>
+                <li><a href="">Chuyển sinh</a></li>
+                <div class="clear"></div>
+            </ul>
+            <p>Mọi thông tin và hình ảnh trên website đều được sưu tầm trên Internet. Chúng tôi không sở hữu hay chịu
+                trách nhiệm bất kỳ thông tin nào trên web này. Nếu làm ảnh hưởng đến cá nhân hay tổ chức nào, khi được
+                yêu cầu, chúng tôi sẽ xem xét và gỡ bỏ ngay lập tức.</p>
+        </div>
+    </div>
+</footer>
+
+<!--//loginform-->
+<div id="id01" class="modal">
+
+    <form class="modal-content animate" method="post">
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+            <img src="img/hhinh-anh-luffy-chibi-thu-the-rat-ngau_055520104.jpg" alt="Avatar" class="avatar">
+        </div>
+        <div class="container">
+            <label class="alert alert-primary" style="color: red" id="checklogin"></label>
+            <label ><b id="validate_username1">Tài khoản</b></label>
+            <input type="text" placeholder="Nhập tài khoản" name="uname" id="username1" oninput="validate1()" required>
+
+            <label ><b id="validate-password1">Mật khẩu</b></label>
+            <input type="password" placeholder="Nhập mật khẩu" name="psw" id="password1" oninput="validate1()" required>
+
+            <button class="btn btn-outline-success" type="button" onclick="login()">Đăng nhập</button>
+            <label>
+                <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+        </div>
+        <div class="container" style="background-color:#f1f1f1">
+            <button style="color: #e2e2e2" type="button" onclick="document.getElementById('id01').style.display='none'"
+                    class="cancelbtn">Hủy
+            </button>
+            <span class="psw">Forgot <a href="#">password?</a></span>
+        </div>
+    </form>
+</div>
+
+<!--//Singupform-->
+<div id="id02" class="modal">
+    <form class="modal-content animate" method="post">
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+            <img src="img/hhinh-anh-luffy-chibi-thu-the-rat-ngau_055520104.jpg" alt="Avatar" class="avatar">
+        </div>
+
+        <div class="container">
+            <label ><b id="validate_username">Tài khoản</b></label>
+            <input type="text" placeholder="Nhập tài khoản" name="uname" id="username" oninput="validate()" required>
+
+            <label ><b id="validate_password">Mật khẩu</b></label>
+            <input type="password" placeholder="Nhập mật khẩu" name="psw" id="password" oninput="validate()" required>
+
+            <label ><b id="validate_re">Nhập lại mật khẩu</b></label>
+            <input type="password" placeholder="Nhập lại mật khẩu" name="rpsw" id="re-password" oninput="validate()"
+                   required>
+
+            <button class="btn btn-outline-success" type="button" onclick="register()">Đăng ký</button>
+            <button class="btn btn-outline-success" type="button"
+                    onclick="document.getElementById('id01').style.display='block'">Đăng nhập
+            </button>
+            <label>
+                <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+        </div>
+        <div class="container" style="background-color:#f1f1f1">
+            <button style="" type="button" onclick="document.getElementById('id02').style.display='none'"
+                    class="cancelbtn">Hủy
+            </button>
+            <span class="psw">Forgot <a href="#">password?</a></span>
+        </div>
+    </form>
+</div>
+
+<!--//ChangePasswordform-->
+<div id="id03" class="modal">
+    <form class="modal-content animate" method="post">
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('id03').style.display='none'" class="close" title="Close Modal">&times;</span>
+            <img src="img/hhinh-anh-luffy-chibi-thu-the-rat-ngau_055520104.jpg" alt="Avatar" class="avatar">
+        </div>
+
+        <div class="container">
+            <label for=><b id="validate_up">Cập nhật mật khẩu</b></label>
+            <input type="password" id="update_pass" placeholder="Nhập lại mật khẩu" name="rpsw" oninput=""
+                   required>
+            <button class="btn btn-outline-success" type="button" onclick="findByPassword()"     >Đổi mật khẩu</button>
+        </div>
+        <div class="container" style="background-color:#f1f1f1">
+            <button style="" type="button" onclick="document.getElementById('id03').style.display='none'"
+                    class="cancelbtn">Hủy
+            </button>
+            <span class="psw">Forgot <a href="#">password?</a></span>
+        </div>
+    </form>
+</div>
+
+</body>
+<script>
+    let listManga = JSON.parse(localStorage.getItem('list_manga'))
+    if (listManga==null){
+        listManga = [];
+    }
+    let username2 = localStorage.getItem('nameKey')
+    if (username2 != null) {
+        document.getElementById('register').style.display = "none";
+        document.getElementById('login').style.display = "none";
+        document.getElementById('dropdownMenuButton1').innerHTML = username2;
+    } else {
+        document.getElementById('dropdown').style.display = 'none'
+        document.getElementById('add_manga').style.display = 'none'
+        document.getElementById('chat_text').style.display = 'none'
+    }
+
+    function logout() {
+        localStorage.removeItem('nameKey')
+        location.reload()
+    }
+    function showListComic() {
+        let  drawComic = listManga.reduce(function (draw1,manga) {
+            return  draw1 +`<div class="grid_item">
+                <div class="book-avarta">
+                    <a href="manga/mangainfo.html">
+                        <img src="${manga.image}" class="image">
+                    </a>
+                    <div class="book-details">
+                        <i class="bi bi-eye-fill"></i>
+                        428,1k
+                        <i class="bi bi-bookmark-fill"></i>
+                        728
+                    </div>
+                </div>
+                <div class="book-info">
+                    <div class="book-name">
+                        <a title="manga" href="manga/mangainfo.html">${manga.mangaName}</a>
+                    </div>
+                    <div class="last-chapter">
+                        <a href="manga/readManga.html">Chapter ${manga.chapter_number}</a>
+                    </div>
+                </div>
+            </div>`
+        },'')
+
+        document.getElementById('listComic').innerHTML= drawComic;
+    }
+    showListComic()
+
+    function createCommentt(){
+        // alert('1111')
+        let id = 0;
+        let username3 = localStorage.getItem('nameKey')
+        let text = document.getElementById('chat_text').value;
+        console.log(text)
+        if(listCM.length===0){ //Nếu mảng rỗng , cho phần tử có id=1
+            id =1;
+        }else{
+            id =listCM[listCM.length-1].id+1;
+        }
+        let comment = new Comment(id, username3, text);
+        listCM.push(comment);
+        localStorage.removeItem('list_CM'); // xóa phần    tử dđi
+        localStorage.setItem('list_CM'  ,JSON.stringify(listCM)); //rồi xét lại
+        showCM();
+    }
+
+    class Comment{
+        id;
+        username3;
+        text;
+
+        constructor(id, username3, text) {
+            this.id = id;
+            this.username3 = username3;
+            this.text = text;
+        }
+    }
+    // Đọc cmt
+    let listCM = JSON.parse(localStorage.getItem('list_CM'))
+    if (listCM==null){
+        listCM = [];
+    }
+
+    function showCM() {
+        let startCM = ''
+        for(let i = 0; i <listCM.length; i++) {
+            startCM += `<h3>${i + 1}<i class="bi bi-chat-right-dots-fill"></i>
+                        ${listCM[i].username3}:
+                         ${listCM[i].text}</h3>`
+        }
+        document.getElementById('chat_div').innerHTML = startCM
+    }showCM()
+
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+<style>
+    * {box-sizing: border-box;}
+    body {font-family: Verdana, sans-serif;}
+    .mySlides {display: none;}
+    img {vertical-align: middle;}
+
+    /* Slideshow container */
+    .slideshow-container {
+
+        width: 71%;
+        position: relative;
+        margin: auto;
+    }
+
+    /* Caption text */
+    .text {
+        color: #dc4d4d;
+        font-size: 35px;
+        padding: 8px 12px;
+        position: absolute;
+        bottom: 8px;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Number text (1/3 etc) */
+    .numbertext {
+        color: #f2f2f2;
+        font-size: 12px;
+        padding: 8px 12px;
+        position: absolute;
+        top: 0;
+    }
+
+    /* The dots/bullets/indicators */
+    .dot {
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+    }
+    
+    /* Fading animation */
+    .fade {
+        animation-name: fade;
+        animation-duration: 1.5s;
+    }
+
+    @keyframes fade {
+        from {opacity: .4}
+        to {opacity: 1}
+    }
+
+    /* On smaller screens, decrease text size */
+    @media only screen and (max-width: 300px) {
+        .text {font-size: 11px}
+    }
+</style>
+</html>
