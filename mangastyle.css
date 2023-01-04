@@ -170,7 +170,7 @@ body.dark-theme {
 .detail {
     display: flex;
     flex-direction: column;
-    width: 170px;
+    width: 181px;
     /*position: relative;*/
     /*min-height: 60px;*/
 }
